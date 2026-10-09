@@ -33,5 +33,5 @@ public class HelloController {
     public String goodBye(){
         return "Good Bye";
     }
-
 }
+
