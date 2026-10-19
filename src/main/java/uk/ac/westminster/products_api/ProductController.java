@@ -19,12 +19,25 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public Product getById(@PathVariable Long id) {
-        return new Product(id, "Laptop", 999.99);
+        return productService.findById(id).orElse(null);
     }
 
     @PostMapping
     public Product addProduct(@RequestBody Product product){
         return productService.addProduct(product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProductById(Long id){
+        productService.deleteById(id);
+
+    }
+
+    @GetMapping ("/search")
+    public List<Product> search(String name){
+        return productService.findByName(name);
+
+
     }
 }
 
