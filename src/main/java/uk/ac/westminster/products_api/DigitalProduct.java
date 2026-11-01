@@ -1,22 +1,51 @@
 package uk.ac.westminster.products_api;
 
 public class DigitalProduct extends Product {
-    private  String downloadurl;
+    private String downloadUrl;
     private double fileSizeMB;
 
 
-    public DigitalProduct(Long id,String name,double price,String downloadurl,double fileSizeMB ){
-        super(id,name,price);
-        this.downloadurl= downloadurl;
-        this.fileSizeMB= fileSizeMB;
+    public DigitalProduct(Long id, String name, double price, String downloadUrl, double fileSizeMB) {
+        super(id, name, price);
+        this.downloadUrl = downloadUrl;
+        this.fileSizeMB = fileSizeMB;
     }
 
-    public String getDownloadurl() {
-        return downloadurl;
+    public String getDownloadUrl() {
+        return downloadUrl;
     }
 
-    public double getFileSizeMB(){
+    public void setDownloadUrl(String downloadUrl){
+        this.downloadUrl= downloadUrl;
+    }
+
+    public double getFileSizeMB() {
         return fileSizeMB;
+    }
+    public void setFileSizeMB(double fileSizeMB){
+        this.fileSizeMB = fileSizeMB;
+
+    }
+    @Override
+    public String getSummary(){
+        return "Product Name:" +getName()
+                +"|Price:"+getPrice()
+                +"|Download Url:"+getDownloadUrl()
+                +"|File Size MB:"+getFileSizeMB();
+    }
+
+    @Override
+    public void applyDiscount(double rate){
+        //no shipping:full rate applies
+        discountedPrice= getPrice()* (1-rate);
+
+    }
+    public double getDiscountedPrice(){
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(double disocuntedPrice){
+        this.discountedPrice= discountedPrice
     }
 
 }

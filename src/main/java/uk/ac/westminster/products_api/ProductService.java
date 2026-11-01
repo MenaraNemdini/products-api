@@ -59,4 +59,12 @@ public class ProductService {
                 .toList();
     }
 
+    public List<String > getAllSummaries(){
+        List<String>summaries=new ArrayList<>();
+        for(Product product: products){
+            String summary=product.getSummary();
+            summaries.add(summary);
+        }
+        return summaries;
+    }
 }
